@@ -82,7 +82,7 @@
 </div>
 <div >
 <p>Превью:</p>
-<img src="https://github.com/stpkkk/React-Table-Test-Welbex/blob/master/About/Prewie.png" alt="test">
+<img src="https://github.com/stpkkk/React-Table-Test-Welbex/blob/master/about/Prewie.png" alt="test">
 </div>
 <div >
 <p>Тестовое:</p>
