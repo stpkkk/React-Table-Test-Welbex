@@ -77,9 +77,7 @@
 <h2>О задании</h2>
     <p>Тестовое задание на должность Frontend-разработчика в компании Welbex с использование фреймворка React.js, PostgreSQL, Sass. Реализовано одностраничное веб-приложение для отображения таблицы с возможностью сортировки. Backend часть реализована в виде СУБД PostgreSQL и приложения pgAdmin.</p>
 </div>
-<div>
-<a href="#" rel="nofollow"> <p>Ссылка на деплой </p></a>
-</div>
+
 <div >
 <p>Превью:</p>
 <img src="https://github.com/stpkkk/React-Table-Test-Welbex/blob/master/about/Prewie.png" alt="test">
