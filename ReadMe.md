@@ -1,7 +1,7 @@
 <div stl></div>
-<h2>Deploy: </h2>
+<h2>Deploy: 
  https://delivery-table.netlify.app/
-
+</h2>
 <details>
 <summary>
 <h2>How to start</h2>
