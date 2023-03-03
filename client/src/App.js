@@ -5,6 +5,7 @@ import Loader from "./components/loader/Loader";
 import SearchBlock from "./components/table/sort/SearchBlock";
 import sortData from "./components/table/sort/searchBlockData";
 import Table from "./components/table/Table";
+import { dataClients } from "./data";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -15,6 +16,23 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [clientsPerPage, setClientsPerPage] = useState(10);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true);
+        // const res = await fetch("http://localhost:5000/delivery");
+        // const jsonData = await res.json();
+        setClients(dataClients.clients);
+      } catch (error) {
+        alert("Error to fetch a data :(");
+        throw error;
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
   // Get sort data
   const filterConditionData = (items, inputTerm, activeFilter, filter) => {
     const lowerTerm = inputTerm.toLowerCase();
@@ -22,12 +40,12 @@ function App() {
       case "default":
         return items;
       case "equal":
-        return items.filter((item) => {
+        return items.filter(item => {
           const lowerName = String(item[activeFilter]).toLowerCase();
           return lowerName === lowerTerm;
         });
       case "contain":
-        return items.filter((item) => {
+        return items.filter(item => {
           const lowerName = String(item[activeFilter]).toLowerCase();
           return lowerName.indexOf(lowerTerm) > -1;
         });
@@ -55,30 +73,10 @@ function App() {
   const currentClients = data.slice(indexOfFirstClient, indexOfLastClient);
 
   //Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const onChangeClientsPerPage = (e) => {
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const onChangeClientsPerPage = e => {
     setClientsPerPage(e.target.value);
   };
-
-  //Fetch
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const res = await fetch("http://localhost:5000/delivery");
-
-        const jsonData = await res.json();
-        setClients(jsonData);
-        setLoading(false);
-      } catch (error) {
-        alert("Error to fetch a data :(");
-        console.error(error);
-        throw error;
-      }
-    }
-
-    fetchData();
-  }, []);
 
   if (loading) return <Loader />;
 
